@@ -19,7 +19,7 @@ defmodule BptrackerWeb.Router do
 
     get "/", PageController, :index
     live "/bptracker", BptrackerLive
-
+    live "/input", InputLive
   end
 
   # Other scopes may use custom stacks.

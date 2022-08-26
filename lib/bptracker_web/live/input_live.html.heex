@@ -1,0 +1,14 @@
+  <article class="column">
+    <.form
+      let={f}
+      for={@my_trailer}
+      phx-change="validate"
+    >
+      <%= label f, :number %>
+      <%= text_input f, :number %>
+      <%= label f, :color %>
+      <%= text_input f, :color %>
+      <%= label f, :type %>
+      <%= text_input f, :type %>
+    </.form>
+  </article>
