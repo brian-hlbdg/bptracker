@@ -27,7 +27,7 @@ defmodule BptrackerWeb.InputLive do
         {:noreply, updated_socket}
     end
 
-    @field_list [:number, :type, :color]
+    @field_list [:number, :color, :type]
 
     defp check_field_length(socket, field) do
         field_value =
