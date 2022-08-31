@@ -17,14 +17,24 @@
       <input type="number" value={@systolic} placeholder="Systolic" \>
       <input type="number" value={@pulse} placeholder="Pulse" \>
       <input type="number" value={@bmi} placeholder="Weight" \>
+      <input type="number" value={@average_diastolic} \>
     </form>
   </article>
   <article class="column">
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
+        <.form
+          let={f}
+          for={@my_bp}
+          phx-change="validate"
+          >
+          <%= label f, :diastolic %>
+          <%= text_input f, :diastolic %>
+          <%= label f, :systolic%>
+          <%= text_input f, :systolic %>
+          <%= label f, :pulse %>
+          <%= text_input f, :pulse %>
+          <%= label f, :weight %>
+          <%= text_input f, :weight %>
+        </.form>
+        <%= @average_diastolic %>
   </article>
 </section>
