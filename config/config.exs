@@ -50,10 +50,13 @@ config :phoenix, :json_library, Jason
 # Configure Tailwind
 config :tailwind,
   version: "3.0.24",
-  default: [
-    args: ~w(css/app.css --output=../priv/static/assets/css/app.css),
-    cd: Path.expand("../assets", __DIR__),
-    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+    default: [
+    args: ~w(
+      --config=tailwind.config.js
+      --input=css/app.css
+      --output=../priv/static/assets/app.css
+    ),
+    cd: Path.expand("../assets", __DIR__)
   ]
 
 # Import environment specific config. This must remain at the bottom
