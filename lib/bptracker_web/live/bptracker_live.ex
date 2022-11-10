@@ -6,21 +6,21 @@ defmodule BptrackerWeb.BptrackerLive do
 
 
     @impl true
-    def mount(_params, _session, socket) do 
-        updated_socket = 
+    def mount(_params, _session, socket) do
+        updated_socket =
             socket
                 |> assign(my_bp: Changeset.change(%Pressure{}))
-                |> assign(diastolic: 200)
-                |> assign(systolic: 97)
-                |> assign(pulse: 72)
-                |> assign(weight: 219)
+                |> assign(diastolic: AverageBp.new_diastolic())
+                |> assign(systolic: AverageBp.new_systolic())
+                |> assign(pulse: AverageBp.new_pulse())
+                |> assign(weight: AverageBp.new_weight())
                 |> assign(average_diastolic: AverageBp.calculate(10))
                 |> assign(average_systolic: 95)
                 |> assign(average_pulse: 77)
                 |> assign(bmi: 32)
     {:ok, updated_socket}
     end
-    
+
     @impl true
     def handle_event("validate", form, socket) do
         my_bp = Pressure.changeset(socket.assigns.my_bp, form["pressure"])
@@ -50,7 +50,7 @@ defmodule BptrackerWeb.BptrackerLive do
             push_event(socket, "focus_input", %{id: input_id(:pressure, next_field)})
         else
             socket
-        end 
+        end
     end
 
     defp check_diastolic_value(socket, field) do
@@ -58,8 +58,7 @@ defmodule BptrackerWeb.BptrackerLive do
             socket.assigns.my_bp
             |> Changeset.get_field(field)
             |> to_string()
-
-        
+        {:ok, socket}
     end
 
 
