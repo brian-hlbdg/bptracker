@@ -3,6 +3,8 @@ defmodule BptrackerWeb.InputLive do
     alias BpTracker.Trailer
     alias Ecto.Changeset
 
+    
+
     @impl true
     def mount(_params, _session, socket) do
         updated_socket =
